@@ -7,7 +7,7 @@ async function run() {
   try {
     
     const token = core.getInput('token')
-    const tookit = new github.Github(token)
+    const tookit = github.getOctokit(myToken)
 
     const release = tookit.repos.getLatestRelease({
       ...github.context.repo
