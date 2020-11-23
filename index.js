@@ -19,7 +19,7 @@ async function run() {
       data: { tag_name: tagName }
     } = latestReleaseRes;
 
-    const version = tagName.split(".")
+    const version = tagName.replace('r').replace('v').split(".")
     const major = version[0]
     const minor = version[1]
     let buildNumber = +version[2]
