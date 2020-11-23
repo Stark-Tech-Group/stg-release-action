@@ -954,8 +954,7 @@ async function run() {
     const tag = 'r' + major + '.' + minor + '.' + buildNumber
     
     const createReleaseResponse = await github.repos.createRelease({
-      owner,
-      repo,
+      ...context.repo,
       tag_name: tag,
       name: tag
     });
