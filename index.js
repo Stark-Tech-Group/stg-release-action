@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const core = require('@actions/github');
+const github = require('@actions/github');
 
 
 // most @actions toolkit packages have async methods
@@ -14,7 +14,7 @@ async function run() {
     });
 
     core.setOutput('relaseNumber', JSON.stringify(release))
-    
+
   } catch (error) {
     core.setFailed(error.message);
   }
