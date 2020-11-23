@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "prepare": "ncc build index.js -o dist --source-map --license licenses.txt",
+    "prepare": "ncc build index.js",
     "test": "jest",
-    "all": "npm run lint && npm run prepare && npm run test"
+    "all": "npm run lint && npm run prepare && npm run test",
+    "build": "ncc build index.js",
+    "precommit": "npm run build && git add dist/"
   },
   "repository": {
     "type": "git",
@@ -30,8 +32,16 @@
     "@actions/github": "^2.2.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.25.1",
-    "eslint": "^7.4.0",
-    "jest": "^26.1.0"
+    "@zeit/ncc": "^0.20.4",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^2.7.0",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.8.0",
+    "prettier": "^1.16.4",
+    "husky": "^3.0.5"
   }
 }
