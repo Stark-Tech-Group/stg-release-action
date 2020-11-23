@@ -952,7 +952,7 @@ async function run() {
 
     buildNumber++
 
-    core.setOutput('releaseId', JSON.stringify(latestRelease))
+    core.setOutput('releaseId', JSON.stringify(latestReleaseRes))
     core.setOutput('releaseNumber', major + '.' + minor + '.' + buildNumber)
     // const createReleaseResponse = await github.repos.createRelease({
     //   owner,
