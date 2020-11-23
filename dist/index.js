@@ -967,7 +967,7 @@ async function run() {
     core.setOutput('id', releaseId);
     core.setOutput('htmlUrl', htmlUrl);
     core.setOutput('uploadUrl', uploadUrl)
-    core.setOutput('releaseNumber', tag)
+    core.setOutput('tag', tag)
 
   } catch (error) {
     core.setFailed(error.message);

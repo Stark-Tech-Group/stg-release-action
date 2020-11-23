@@ -5,10 +5,14 @@ inputs:
     description: 'Github token'
     required: true
 outputs:
-  releaseId: # release number
+  id: # release number
     description: 'release id'
-  releaseNumber: #version number
+  tag: #version number
     description: 'version number'
+  htmlUrl:
+    description: 'release url'
+  uploadUrl:
+    description: 'asset upload url'
 runs:
   using: 'node12'
   main: 'dist/index.js'
