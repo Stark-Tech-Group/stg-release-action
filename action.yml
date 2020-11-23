@@ -5,8 +5,10 @@ inputs:
     description: 'Github token'
     required: true
 outputs:
-  relaseNumber: # release number
-    description: 'release number'
+  releaseId: # release number
+    description: 'release id'
+  releaseNumber: #version number
+    description: 'version number'
 runs:
   using: 'node12'
   main: 'dist/index.js'

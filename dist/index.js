@@ -937,11 +937,23 @@ async function run() {
     const { owner: currentOwner, repo: currentRepo } = context.repo;
 
     
-    const latestRelease = await github.repos.getLatestRelease({
+    const latestReleaseRes = await github.repos.getLatestRelease({
       ...context.repo
     })
 
-    core.setOutput('relaseNumber', JSON.stringify(latestRelease))
+    const {
+      data: { id: releaseId, tag_name: tagName }
+    } = latestReleaseRes;
+
+    const version = tagName.split(".")
+    const major = version[0]
+    const minor = version[1]
+    const buildNumber = +version[2]
+
+    buildNumber++
+
+    core.setOutput('releaseId', JSON.stringify(latestRelease))
+    core.setOutput('releaseNumber', major + '.' + minor + '.' + buildNumber)
     // const createReleaseResponse = await github.repos.createRelease({
     //   owner,
     //   repo,
