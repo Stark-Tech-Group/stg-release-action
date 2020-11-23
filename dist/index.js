@@ -964,8 +964,6 @@ async function run() {
     } = createReleaseResponse;
 
     core.setOutput('id', releaseId);
-    core.setOutput('htmlUrl', htmlUrl);
-    core.setOutput('uploadUrl', uploadUrl)
     core.setOutput('tag', tag)
 
   } catch (error) {

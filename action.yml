@@ -9,10 +9,6 @@ outputs:
     description: 'release id'
   tag: #version number
     description: 'version number'
-  htmlUrl:
-    description: 'release url'
-  uploadUrl:
-    description: 'asset upload url'
 runs:
   using: 'node12'
   main: 'dist/index.js'
