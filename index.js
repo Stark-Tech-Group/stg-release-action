@@ -16,7 +16,7 @@ async function run() {
     })
 
     const {
-      data: { id: releaseId, tag_name: tagName }
+      data: { tag_name: tagName }
     } = latestReleaseRes;
 
     const version = tagName.split(".")
@@ -25,29 +25,24 @@ async function run() {
     let buildNumber = +version[2]
 
     buildNumber++
+    const tag = 'r' + major + '.' + minor + '.' + buildNumber
+    
+    const createReleaseResponse = await github.repos.createRelease({
+      owner,
+      repo,
+      tag_name: tag,
+      name: tag
+    });
 
-    core.setOutput('releaseId', JSON.stringify(latestReleaseRes))
-    core.setOutput('releaseNumber', major + '.' + minor + '.' + buildNumber)
-    // const createReleaseResponse = await github.repos.createRelease({
-    //   owner,
-    //   repo,
-    //   tag_name: tag,
-    //   name: releaseName,
-    //   body: bodyFileContent || body,
-    //   draft,
-    //   prerelease,
-    //   target_commitish: commitish
-    // });
+    const {
+      data: { id: releaseId, html_url: htmlUrl, upload_url: uploadUrl }
+    } = createReleaseResponse;
 
-    // // Get the ID, html_url, and upload URL for the created Release from the response
-    // const {
-    //   data: { id: releaseId, html_url: htmlUrl, upload_url: uploadUrl }
-    // } = createReleaseResponse;
+    core.setOutput('id', releaseId);
+    core.setOutput('htmlUrl', htmlUrl);
+    core.setOutput('uploadUrl', uploadUrl)
+    core.setOutput('releaseNumber', tag)
 
-    // // Set the output variables for use by other actions: https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs
-    // core.setOutput('id', releaseId);
-    // core.setOutput('html_url', htmlUrl);
-    // core.setOutput('upload_url', uploadUrl);
   } catch (error) {
     core.setFailed(error.message);
   }
