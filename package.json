@@ -26,7 +26,7 @@
   "homepage": "https://github.com/Stark-Tech-Group/stg-release-actionn#readme",
   "dependencies": {
     "@actions/core": "^1.2.5",
-    "@actions/github": "^1.1.0"
+    "@actions/github": "^4.0.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",
