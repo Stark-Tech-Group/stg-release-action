@@ -1,5 +1,5 @@
 {
-  "name": "STG Create Release",
+  "name": "stg-create-release",
   "version": "1.0.0",
   "description": "Create Release",
   "main": "index.js",
