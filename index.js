@@ -22,7 +22,7 @@ async function run() {
     const version = tagName.split(".")
     const major = version[0]
     const minor = version[1]
-    const buildNumber = +version[2]
+    let buildNumber = +version[2]
 
     buildNumber++
 
