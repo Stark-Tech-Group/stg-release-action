@@ -5,28 +5,9 @@ async function run() {
   try {
 
     const token = core.getInput('token')
+    const tag = core.getInput('version')
     const github = new GitHub(token);
 
-    // Get owner and repo from context of payload that triggered the action
-    const { owner: currentOwner, repo: currentRepo } = context.repo;
-
-    
-    const latestReleaseRes = await github.repos.getLatestRelease({
-      ...context.repo
-    })
-
-    const {
-      data: { tag_name: tagName }
-    } = latestReleaseRes;
-
-    const version = tagName.replace('r').replace('v').split(".")
-    const major = version[0]
-    const minor = version[1]
-    let buildNumber = +version[2]
-
-    buildNumber++
-    const tag = 'r' + major + '.' + minor + '.' + buildNumber
-    
     const createReleaseResponse = await github.repos.createRelease({
       ...context.repo,
       tag_name: tag,
@@ -38,7 +19,6 @@ async function run() {
     } = createReleaseResponse;
 
     core.setOutput('id', releaseId);
-    core.setOutput('tag', tag)
 
   } catch (error) {
     core.setFailed(error.message);

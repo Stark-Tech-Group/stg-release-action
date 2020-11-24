@@ -4,11 +4,12 @@ inputs:
   token:  # github token
     description: 'Github token'
     required: true
+  version: 
+    description: 'Release version/tag'
+    required: true
 outputs:
   id: # release number
     description: 'release id'
-  tag: #version number
-    description: 'version number'
 runs:
   using: 'node12'
   main: 'dist/index.js'
