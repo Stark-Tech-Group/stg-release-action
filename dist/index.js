@@ -10492,9 +10492,9 @@ async function run() {
 
     const token = core.getInput('token')
     const tag = core.getInput('version')
-    const github = new GitHub(token);
+    const octokit = github.getOctokit(myToken)
 
-    const createReleaseResponse = await github.repos.createRelease({
+    const createReleaseResponse = await octokit.rest.repos.createRelease({
       ...context.repo,
       tag_name: tag,
       name: tag

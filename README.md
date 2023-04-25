@@ -1,5 +1,7 @@
 # Create a JavaScript Action
 
+[ocktokit api](https://octokit.github.io/rest.js/v19)
+[action toolkit](https://github.com/actions/toolkit/tree/main)
 <p align="center">
   <a href="https://github.com/actions/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/actions/javascript-action/workflows/units-test/badge.svg"></a>
 </p>
