@@ -1,12 +1,13 @@
 const core = require('@actions/core');
-const { GitHub, context } = require('@actions/github');
+const github = require('@actions/github');
+const context = github.context;
 
 async function run() {
   try {
 
     const token = core.getInput('token')
     const tag = core.getInput('version')
-    const octokit = GitHub.getOctokit(myToken)
+    const octokit = github.getOctokit(myToken)
 
     const createReleaseResponse = await octokit.rest.repos.createRelease({
       ...context.repo,
@@ -26,13 +27,3 @@ async function run() {
 }
 
 run();
-
-
-
-
-// octokit.repos.uploadReleaseAsset({
-//   owner,
-//   repo,
-//   release_id,
-//   data,
-// });
