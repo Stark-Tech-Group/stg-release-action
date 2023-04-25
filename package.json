@@ -28,7 +28,7 @@
   "homepage": "https://github.com/Stark-Tech-Group/stg-release-actionn#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/exec": "^1.0.0",
+    "@actions/exec": "^1.1.1",
     "@actions/github": "^5.0.0"
   },
   "devDependencies": {
