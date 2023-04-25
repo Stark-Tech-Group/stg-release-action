@@ -10493,7 +10493,7 @@ async function run() {
 
     const token = core.getInput('token')
     const tag = core.getInput('version')
-    const octokit = github.getOctokit(myToken)
+    const octokit = github.getOctokit(token)
 
     const createReleaseResponse = await octokit.rest.repos.createRelease({
       ...context.repo,
